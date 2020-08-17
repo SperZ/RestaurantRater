@@ -3,6 +3,7 @@ using RestaurantRater.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -36,6 +37,32 @@ namespace RestaurantRater.Controllers
             }
 
             return View(restaurant); // this doesnt kill the form just returns the model given back to the view so the user can correct their mistakes
+        }
+
+        public ActionResult Delete(int? id)
+        {
+            if(id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Restaurant restaurant = _dbContext.Restaurants.Find(id);
+            if (restaurant == null)
+            {
+                return HttpNotFound();
+            }
+            return View(restaurant);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+
+        public ActionResult Delete(int id)
+        {
+            Restaurant restaurant = _dbContext.Restaurants.Find(id);
+            _dbContext.Restaurants.Remove(restaurant);
+            _dbContext.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }
