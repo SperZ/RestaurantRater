@@ -18,9 +18,12 @@
         <th>
            @Html.DisplayNameFor(model => model.Address) 
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Rating)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CuisineType)
+        </th>*@
         <th></th>
     </tr>
     @foreach (var item in Model)
@@ -32,13 +35,16 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Address)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Rating)
             </td>
             <td>
+                @Html.DisplayFor(model => item.CuisineType)
+            </td>*@
+            <td>
                 @Html.ActionLink("Change", "Edit", new { id = item.RestaurantID }) |  <!--Change will be the named that is displayed on the webpage, Edit is the action name, the far right item is the route value will routes you to the element you want ot perform the action on-->
-                @Html.ActionLink("More Info", "Details", new { id = item.RestaurantID }) | 
-                @Html.ActionLink("Remove", "Delete", new { id = item.RestaurantID}) |
+                @Html.ActionLink("More Info", "Details", new { id = item.RestaurantID }) |
+                @Html.ActionLink("Remove", "Delete", new { id = item.RestaurantID }) |
             </td>
         </tr>
     }
