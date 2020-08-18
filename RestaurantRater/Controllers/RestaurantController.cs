@@ -87,12 +87,12 @@ namespace RestaurantRater.Controllers
         {
             if (ModelState.IsValid)
             {
-                _dbContext.Entry(restaurant).State = EntityState.Modified;
+                _dbContext.Entry(restaurant).State = EntityState.Modified; //the entry will query the database and see if there is a model that matches up with the model passed in through the parameters
                 _dbContext.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(restaurant);
+            return View(restaurant); // this will return the edit view, it is exactly the same as what the user entered so they can make changes that are appropiate with out losing previously entered data that is valid.
         }
 
         //Get: Restaurant/Details{id}

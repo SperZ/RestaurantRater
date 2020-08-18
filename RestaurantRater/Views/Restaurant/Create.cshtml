@@ -5,6 +5,7 @@
 }
 
 <h2>Create</h2>
+@using RestaurantRater.Models
 
 @using (Html.BeginForm())
 {
@@ -40,8 +41,11 @@
     <div class="form-group">
         @Html.LabelFor(model => model.CuisineType, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.CuisineType, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.CuisineType, "", new { @class = "text-danger" })
+            @Html.EnumDropDownListFor(model => model.CuisineType, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Rating, "", new { @class = "text-danger" })
+            <!--This creates a drop down to display the list of enum elements for the user to choose from-->
+            @*@Html.EditorFor(model => model.CuisineType, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.CuisineType, "", new { @class = "text-danger" })*@
         </div>
     </div>
 

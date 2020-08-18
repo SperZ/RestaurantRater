@@ -10,11 +10,11 @@
 <div>
     <h4> Restaurant</h4>
     <hr/>
-    <dl class="dl-horizontal">
-        <dt>
+    <dl class="dl-horizontal"> @*dl is bootstrap for description list, and horizontal tells it to put details to the side of the description term*@
+        <dt> <!--Dt stands for description term it is what is the name of the property that will be displayed the value is going to be of-->>
             @Html.DisplayNameFor(model => model.Name)
         </dt>
-        <dd>
+        <dd><!--dd stands for description data it is the value the property that going to be displayed for instance here it would be the value that the restaurant is set to-->
             @Html.DisplayFor(model => model.Name)
         </dd>
         <dt>
